@@ -1,0 +1,124 @@
+%%writefile student-result-analyzer/templates/index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Student Result Analyzer</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+            padding: 30px;
+        }
+
+        .container {
+            width: 400px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Student Result Analyzer</h1>
+
+    <form method="POST">
+
+        <label>Student Name</label>
+        <input type="text" name="name" required>
+
+        <label>Roll Number</label>
+        <input type="text" name="roll" required>
+
+        <label>Subject 1</label>
+        <input type="number" name="sub1" min="0" max="100" required>
+
+        <label>Subject 2</label>
+        <input type="number" name="sub2" min="0" max="100" required>
+
+        <label>Subject 3</label>
+        <input type="number" name="sub3" min="0" max="100" required>
+
+        <label>Subject 4</label>
+        <input type="number" name="sub4" min="0" max="100" required>
+
+        <label>Subject 5</label>
+        <input type="number" name="sub5" min="0" max="100" required>
+
+        <button type="submit">Calculate Result</button>
+
+    </form>
+
+
+    {% if result %}
+
+    <div class="result">
+
+        <h2>Student Result</h2>
+
+        <p><b>Name:</b> {{ result.name }}</p>
+
+        <p><b>Roll No:</b> {{ result.roll }}</p>
+
+        <hr>
+
+        <p><b>Total:</b> {{ result.total }} / 500</p>
+
+        <p><b>Percentage:</b> {{ result.percentage }}%</p>
+
+        <p><b>Highest Mark:</b> {{ result.highest }}</p>
+
+        <p><b>Lowest Mark:</b> {{ result.lowest }}</p>
+
+        <p><b>Grade:</b> {{ result.grade }}</p>
+
+        <p><b>Result:</b> {{ result.status }}</p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
+
